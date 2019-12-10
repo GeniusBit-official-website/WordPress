@@ -28,6 +28,21 @@ function work_metaboxes_on_page( $meta_boxes ) {
     			'id' => $prefix . 'work_checkbox',
     			'type' => 'checkbox'
 			),
+			array(
+				'name' => 'Display Order',
+				'id' => $prefix . 'menu_disp_order',
+				'type' => 'select',
+				'std' => '-1',
+				'options' => array(
+					'-1' => 'not display',
+					'1' => 'top-left-square-large',
+					'2' => 'top-middle-square-1',
+					'3' => 'top-middle-square-2',
+					'6' => 'top-bottom-left-square',
+					'5' => 'middle-middle-square',
+					'4' => 'top-right-square-large',
+				)
+			),
         ),
     );
 

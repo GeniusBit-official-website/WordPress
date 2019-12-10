@@ -42,16 +42,30 @@ get_header('home'); ?>
                     array(
                         // 'post',
                         'page',
-                        // 'work'
+                        // 'work',
                     )
                 );
                 $args = array(
                     'post_type' => $posttypes,
-                    'meta_key' => '_wk_work_checkbox',
-                    'posts_per_page' => 11,
-                    'fields' => 'ids',
-					'orderby' => 'post_title',
-					'order' => 'DESC',
+					// Stick postのチェックボックスがオン、かつ表示順「not display」以外が指定されているページのみを表示
+					'meta_query' => array(
+						array(
+							'key' => '_wk_work_checkbox',
+							'value' => 'on',
+						),
+						array(
+							'key' => '_wk_menu_disp_order',
+							'value' => 0,
+							'compare' => '>',
+						),
+					),
+					'posts_per_page' => 5,
+					'fields' => 'ids',
+					'meta_key' => '_wk_menu_disp_order',
+					'orderby' => array(
+						'meta_value' => 'ASC',
+					   	'menu_order' => 'ASC',
+					),
                 );
                 $myposts = get_posts( $args ); ?>
 
